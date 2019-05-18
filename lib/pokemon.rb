@@ -18,7 +18,11 @@ class Pokemon
       SET hp = ? 
       WHERE pokemon.id = ?
       SQL
+<<<<<<< HEAD
     db.prepare(sql).execute(self.hp, self.id)
+=======
+    db.execute(sql, self.hp, self.id)
+>>>>>>> 613025bc1ad9accfcabfafcc4d7e1267837704f2
   end
   
   def self.find(id, db)
@@ -27,7 +31,12 @@ class Pokemon
       FROM pokemon
       WHERE pokemon.id = ?
       SQL
+<<<<<<< HEAD
     db.prepare(sql).execute(id).map{ |x| self.new_from_db(x, db) }[0]
+=======
+    statement = db.prepare(sql)
+    db.execute(statement, id).map{ |x| self.new_from_db(x, db) }[0]
+>>>>>>> 613025bc1ad9accfcabfafcc4d7e1267837704f2
   end
   
   def self.new_from_db(row, db)
@@ -45,7 +54,11 @@ class Pokemon
       INSERT INTO pokemon(name, p_type)
       VALUES(?, ?)
       SQL
+<<<<<<< HEAD
     db.prepare(sql).execute(name, type)
+=======
+    db.execute(sql, name, type)
+>>>>>>> 613025bc1ad9accfcabfafcc4d7e1267837704f2
   end
   
 end
